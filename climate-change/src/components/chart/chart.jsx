@@ -48,7 +48,12 @@ class climateChart extends React.Component {
     }
 
     handleClick() {
-        alert(1);
+        let oldData = this.state.datasets.slice();
+        oldData[0].data = [40,45,50,55,60,65,70];
+        this.setState({
+            datasets: oldData
+        });
+        this.render();
     }
 }
 
