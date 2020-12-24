@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Line } from 'react-chartjs-2';
+import canJSON from './../../data/yearly/CAN.json'
 
 import './chart.css';
 
@@ -42,15 +43,15 @@ class climateChart extends Component {
         return (
             <div>
                 <Line ref="chart" data={this.state} />
-                <button onClick={this.fetchData.bind(this)}>Update Data</button>
+                <button onClick={this.displayHistory.bind(this)}>Update Data</button>
             </div>
         )
     }
 
-    displayHistory(json) {
+    displayHistory() {
         const labels = [];
         const newData = [];
-        json.forEach(entry => {labels.push(entry.year); newData.push(entry.data)});
+        canJSON.forEach(entry => {labels.push(entry.year); newData.push(entry.data)});
         const newDataset = this.state.datasets.slice();
         newDataset[0].data = newData;
         this.setState({
@@ -58,18 +59,6 @@ class climateChart extends Component {
             datasets: newDataset
         });
         this.render();
-    }
-
-    fetchData() {
-        fetch('http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/year/' + this.props.country)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Status code: ' + response.status)
-            }
-            return response.json();
-        })
-        .then(json => {this.displayHistory(json)})
-        .catch(error => {console.error('There was a problem: '  + error)});
     }
 }
 
