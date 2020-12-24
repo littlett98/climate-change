@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/climate-change/static/css/main.8129fca1.chunk.css",
+    "main.js": "/climate-change/static/js/main.ca574344.chunk.js",
+    "main.js.map": "/climate-change/static/js/main.ca574344.chunk.js.map",
+    "runtime-main.js": "/climate-change/static/js/runtime-main.86a36322.js",
+    "runtime-main.js.map": "/climate-change/static/js/runtime-main.86a36322.js.map",
+    "static/js/2.12feefb3.chunk.js": "/climate-change/static/js/2.12feefb3.chunk.js",
+    "static/js/2.12feefb3.chunk.js.map": "/climate-change/static/js/2.12feefb3.chunk.js.map",
+    "static/js/3.8e136990.chunk.js": "/climate-change/static/js/3.8e136990.chunk.js",
+    "static/js/3.8e136990.chunk.js.map": "/climate-change/static/js/3.8e136990.chunk.js.map",
+    "index.html": "/climate-change/index.html",
+    "static/css/main.8129fca1.chunk.css.map": "/climate-change/static/css/main.8129fca1.chunk.css.map",
+    "static/js/2.12feefb3.chunk.js.LICENSE.txt": "/climate-change/static/js/2.12feefb3.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.86a36322.js",
+    "static/js/2.12feefb3.chunk.js",
+    "static/css/main.8129fca1.chunk.css",
+    "static/js/main.ca574344.chunk.js"
+  ]
+}
