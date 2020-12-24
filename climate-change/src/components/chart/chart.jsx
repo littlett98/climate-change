@@ -3,7 +3,7 @@ import { Line } from 'react-chartjs-2';
 
 import './chart.css';
 
-class climateChart extends React.Component {
+class climateChart extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -35,25 +35,41 @@ class climateChart extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.state.datasets[0].data);
+        
     }
     
     render() {
         return (
             <div>
                 <Line ref="chart" data={this.state} />
-                <button onClick={this.handleClick.bind(this)}>Update Data</button>
+                <button onClick={this.fetchData.bind(this)}>Update Data</button>
             </div>
         )
     }
 
-    handleClick() {
-        let oldData = this.state.datasets.slice();
-        oldData[0].data = [40,45,50,55,60,65,70];
+    displayHistory(json) {
+        const labels = [];
+        const newData = [];
+        json.forEach(entry => {labels.push(entry.year); newData.push(entry.data)});
+        const newDataset = this.state.datasets.slice();
+        newDataset[0].data = newData;
         this.setState({
-            datasets: oldData
+            labels: labels,
+            datasets: newDataset
         });
         this.render();
+    }
+
+    fetchData() {
+        fetch('http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/year/' + this.props.country)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Status code: ' + response.status)
+            }
+            return response.json();
+        })
+        .then(json => {this.displayHistory(json)})
+        .catch(error => {console.error('There was a problem: '  + error)});
     }
 }
 

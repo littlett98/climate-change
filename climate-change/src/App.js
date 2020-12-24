@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <h1>
         hi
-        <Chart />
+        <Chart country="CAN" />
       </h1>
     </div>
   )
